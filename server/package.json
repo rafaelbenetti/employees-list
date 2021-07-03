@@ -1,0 +1,18 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon -L index.js",
+    "test": "mocha tests/ --watch"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.1"
+  },
+  "devDependencies": {
+    "mocha": "^9.0.1",
+    "supertest": "^6.1.3"
+  }
+}
