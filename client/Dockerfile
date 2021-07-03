@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:14
 
 RUN mkdir -p /app
 
@@ -10,6 +10,6 @@ RUN npm i && npm i -g @angular/cli
 
 COPY . /app/
 
-EXPOSE 4200 
+EXPOSE 4200
 
 CMD ["npm", "start"]
