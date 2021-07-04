@@ -1,3 +1,8 @@
+<div class="employees-header">
+  <h1 class="title">Employees</h1>
+</div>
+
 <div class="employees-container">
-  <h1 class="page-header">Employees</h1>
+  <app-employee-item *ngFor="let employee of (employees$ | async)" (delete)="onDeleteItem(employee)" [employee]="employee">
+  </app-employee-item>  
 </div>
