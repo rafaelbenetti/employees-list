@@ -1,0 +1,14 @@
+@import 'variables';
+
+.employees-container {
+  text-align: left;
+  padding: 0 .5rem;
+
+  .page-header {
+    padding-bottom: .5rem;
+    margin: 1rem 0;
+    border-bottom: 1px solid $border-color;
+    font-weight: normal;
+    font-size: $title-font-size;
+  }
+}

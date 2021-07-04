@@ -1,0 +1,14 @@
+@import 'variables';
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: $font-color;
+  background-color: $light-gray-color;
+  text-align: center;
+  p {
+    font-size: 90%;
+  }
+}
