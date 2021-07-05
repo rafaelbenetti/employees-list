@@ -8,6 +8,7 @@ import { Employee } from '../employee.model';
 })
 export class EmployeeItemComponent implements OnInit {
   @Output() delete: EventEmitter<void> = new EventEmitter();
+  @Output() edit: EventEmitter<void> = new EventEmitter();
 
   @Input() employee!: Employee;
 
@@ -21,5 +22,6 @@ export class EmployeeItemComponent implements OnInit {
   }
 
   onEdit() {
+    this.edit.emit();
   }
 }
