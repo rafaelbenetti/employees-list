@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { Employee, WorkPositionType } from 'src/app/employee/employee.model';
+import { Employee } from 'src/app/employee/employee.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +14,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   get(): Observable<Employee[]> {
-    return of([{
-      id: 1,
-      name: 'Rafael',
-      surname: 'Benetti',
-      workPosition: WorkPositionType.FrontEndDeveloper,
-      birthDate: new Date(1991, 7, 15)
-    },{
-      id: 1,
-      name: 'Ruhan',
-      surname: 'Pablo',
-      workPosition: WorkPositionType.FrontEndDeveloper,
-      birthDate: new Date(1991, 7, 15)
-    }]);
+    return this.http.get<Employee[]>(this.url);
   }
 
   create(employee: Employee): Observable<Employee> {
@@ -37,7 +25,7 @@ export class EmployeeService {
     return this.http.put<Employee>(this.url, employee);
   }
 
-  delete(id: number): Observable<{}> {
+  delete(id?: number): Observable<{}> {
     return this.http.delete(`${this.url}/${id}`);
   }
 }

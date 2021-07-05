@@ -1,7 +1,7 @@
 import { connect } from '../config/db.config';
 import { EmployeeModel, IEmployee } from './employee.model';
 
-export class EmployeekService {
+export class EmployeeService {
 
   constructor() {
     connect();

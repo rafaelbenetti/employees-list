@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { EmployeesListComponent } from './employees-list/employees-list.component';
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeItemComponent } from './employee-item/employee-item.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { EmployeeItemComponent } from './employee-item/employee-item.component';
   imports: [
     FormsModule,
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    SharedModule
   ]
 })
 export class EmployeeModule { }

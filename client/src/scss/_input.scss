@@ -1,0 +1,9 @@
+input {
+  height: $input-height;
+  border: 1px solid $border-color;
+  border-radius: 2px;
+  padding-left: 10px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}

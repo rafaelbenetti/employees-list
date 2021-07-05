@@ -1,0 +1,25 @@
+$secondary-border-color: #99a8b1;
+
+.button {
+  background-color: $primary-color;
+  height: $input-height;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  padding: 0 1rem;  
+  margin: .5rem;
+  white-space: nowrap;
+  &--secondary {
+    background-color: $secondary-color;
+    color: $primary-color;
+    border: 1px solid $secondary-border-color;
+  }
+  &--medium {
+    width: 120px;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}

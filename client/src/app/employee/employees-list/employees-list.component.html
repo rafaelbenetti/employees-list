@@ -2,6 +2,15 @@
   <h1 class="title">Employees</h1>
 </div>
 
+<div class="row">
+  <div class="col col-6">
+    <input type="text" placeholder="Search by name, surname or work position">
+  </div>
+  <div class="col col-6 hire-container">
+    <button (click)="onHire()" class="button button--medium">Hire Employee</button>
+  </div>
+</div>
+
 <div class="employees-container">
   <app-employee-item *ngFor="let employee of (employees$ | async)" (delete)="onDeleteItem(employee)" [employee]="employee">
   </app-employee-item>  

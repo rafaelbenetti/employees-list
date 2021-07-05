@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
-import { Employee } from '../employee.model';
+import { Employee, WorkPositionType } from '../employee.model';
 
 @Component({
   selector: 'app-employees-list',
@@ -21,6 +21,17 @@ export class EmployeesListComponent {
 
   onDeleteItem(employee: Employee) {
     this.employeeService.delete(employee.id)
+      .subscribe();
+  }
+
+  onHire() {
+    const employee = {
+      name: 'Jean',
+      surname: 'Pinzon',
+      workPosition: WorkPositionType.SwAdmin,
+      birthDate: new Date(1995, 7, 5)
+    }
+    this.employeeService.create(employee)
       .subscribe();
   }
 }
