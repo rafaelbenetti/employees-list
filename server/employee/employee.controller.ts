@@ -1,12 +1,12 @@
-import { EmployeekService } from './employee-service';
+import { EmployeeService } from './employee-service';
 import { IEmployee } from './employee.model';
 
 export class EmployeeController {
 
-  private employeeService!: EmployeekService;
+  private employeeService!: EmployeeService;
 
   constructor() {
-    this.employeeService = new EmployeekService();
+    this.employeeService = new EmployeeService();
   }
 
   async get() {

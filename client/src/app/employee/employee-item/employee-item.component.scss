@@ -4,17 +4,24 @@
   text-align: center;
   border-bottom: 1px solid $border-color;
   padding: 1rem;
-  .title-container,
-  .button-container {
+  div:first-child {
+    vertical-align:top;
+  }
+  &:hover {
+    background-color: $border-color;
+  }
+  .name {
+    font-weight: 600;
+  }
+  .work-position {
     display: inline-block;
-  }
-  .title-container {
-    width: 80%;
-    text-align: left;
-  }
-  .button-container {
-    width: 20%;
-    text-align: right;
+    padding: 3px;
+    background-color: $primary-color;
+    color: white;
+    border-radius: 3px;
+    font-size: 90%;
+    margin-left: 1rem;
+    margin-top: .5rem;
   }
 }
 

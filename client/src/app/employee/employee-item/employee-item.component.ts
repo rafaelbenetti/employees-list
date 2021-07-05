@@ -19,4 +19,7 @@ export class EmployeeItemComponent implements OnInit {
   onDelete() {
     this.delete.emit();
   }
+
+  onEdit() {
+  }
 }

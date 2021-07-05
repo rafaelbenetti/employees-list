@@ -4,9 +4,9 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { EmployeeService } from './shared/services/employee.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +18,8 @@ import { EmployeeService } from './shared/services/employee.service';
     AppRoutingModule,
     BrowserModule,
     RouterModule,
+    SharedModule
   ],
-  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,9 +3,11 @@
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true
   }
 }
