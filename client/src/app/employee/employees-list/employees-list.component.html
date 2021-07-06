@@ -3,8 +3,11 @@
 </div>
 
 <div class="row">
-  <div class="col col-6">
-    <input type="text" placeholder="Search by name, surname or work position">
+  <div [formGroup]="formGroup" class="col col-6 input-field">    
+    <mat-form-field floatLabel="never">
+      <mat-label>Search by name, surname or work position</mat-label>
+      <input matInput formControlName="search">
+    </mat-form-field>
   </div>
   <div class="col col-6 hire-container">
     <button (click)="onHire()" class="button button--medium">Hire Employee</button>
@@ -12,6 +15,7 @@
 </div>
 
 <div class="employees-container">
-  <app-employee-item *ngFor="let employee of (employees$ | async)" (delete)="onDeleteItem(employee)" [employee]="employee">
+  <app-employee-item *ngFor="let employee of (employees$ | async)" (delete)="onDelete(employee)" 
+    (edit)="onEdit(employee.id)" [employee]="employee">
   </app-employee-item>  
 </div>

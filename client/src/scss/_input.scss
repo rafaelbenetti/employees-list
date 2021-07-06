@@ -1,9 +1,103 @@
-input {
-  height: $input-height;
-  border: 1px solid $border-color;
-  border-radius: 2px;
-  padding-left: 10px;
-  outline: none;
+@import 'variables';
+
+$background: white !important;
+$border: 1px solid $border-color;
+$border-radius: 2px !important;
+$padding: 9px;
+$color-with-opacity: rgba(0,0,0,.54);
+
+.input-label {
+  display: inline-block;
   width: 100%;
-  box-sizing: border-box;
+  text-align: left;
+  padding-bottom: .3rem;
+
+  span {
+    color: $required-color;
+  }
+}
+
+.input-field,
+.date-field { 
+  mat-form-field {
+    display: inline-block;
+    width: 100%;
+    color: $input-color;
+    .mat-form-field-label-wrapper label {
+      color: $color-with-opacity !important;
+    }
+  }
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  .mat-form-field-flex {
+    background: $background;
+    border: $border;
+    border-radius: $border-radius;
+    .mat-form-field-label-wrapper {
+      padding: 0;
+      left: 0;
+      bottom: 0;
+      top: 0 !important;
+
+      label {
+        line-height: 16px;
+        left: 10px;
+        top: auto;
+        bottom: 9px;
+      }
+    }
+  }
+
+  .mat-form-field-invalid .mat-form-field-flex {
+    border-color: $required-color;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+}
+
+
+.input-field {
+  .mat-form-field-flex .mat-form-field-infix {
+    padding: $padding;
+    border: 0;
+  }
+}
+
+.date-field {
+  mat-icon {
+    color: $primary-color;
+  }
+
+  .mat-form-field-flex {
+    justify-content: space-between;
+    padding-right: 10px;
+
+    .mat-form-field-infix {
+      flex-grow: 0;
+      width: 110px;
+      padding: $padding;
+      border: 0;
+
+      input {
+        line-height: 16px;
+      }
+    }
+
+    .mat-form-field-suffix {
+      line-height: 16px;
+      align-self: center;
+
+      .mat-button-wrapper {
+        svg {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+  }
 }

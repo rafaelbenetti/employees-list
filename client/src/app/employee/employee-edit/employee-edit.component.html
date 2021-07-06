@@ -1,0 +1,68 @@
+<div class="employee-header">
+  <h1 class="title">{{ isEdit ? 'Update' : 'Hire' }} Employee</h1>
+</div>
+
+<div [formGroup]="formGroup" class="employee-form">
+  <div class="row">
+    <div class="col col-12 input-field">
+      <mat-label class="input-label">Name<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Name">
+      </mat-form-field> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-12 input-field">
+      <mat-label class="input-label">Surname<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" placeholder="Surname">
+      </mat-form-field>      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-12 input-field">      
+      <mat-label class="input-label">Work Position<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Select Work Position</mat-label>
+        <mat-select formControlName="workPosition" placeholder="Work Position">          
+          <mat-option *ngFor="let position of (workPostionOptions$ | async)" [value]="position">{{ position }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-12 date-field">
+      <mat-label class="input-label">Birthday<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Birthday</mat-label>
+        <input matInput formControlName="birthDate" placeholder="Birthday" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col col-12 text-align-right">
+      <ng-container *ngIf="isEdit else hireButton">
+        <button (click)="onUpdate()" [disabled]="!formGroup.valid" class="button">
+          Update Employee
+        </button>
+      </ng-container>
+      <ng-template #hireButton>
+        <button (click)="onCreate()" [disabled]="!formGroup.valid" class="button">
+          Hire Employee
+        </button>
+      </ng-template>
+      
+      <button (click)="redirectToEmployees()" class="button button--secondary">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
