@@ -6,4 +6,19 @@ input {
   outline: none;
   width: 100%;
   box-sizing: border-box;
+
+  &.ng-touched:required {
+    border: 1px solid $required-color;
+    outline: none;
+  }
+}
+
+.input-label {
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  padding-bottom: .3rem;
+  span {
+    color: $required-color;
+  }
 }

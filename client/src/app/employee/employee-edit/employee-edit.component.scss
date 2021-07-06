@@ -1,0 +1,14 @@
+@import 'variables';
+
+.employee-header {
+  margin-bottom: 2rem;
+  text-align: left;  
+
+  .title {
+    padding-bottom: .5rem;
+    margin: 1rem 0;
+    border-bottom: 1px solid $border-color;
+    font-weight: normal;
+    font-size: $title-font-size;
+  }
+}

@@ -5,11 +5,13 @@ import { EmployeesListComponent } from './employees-list/employees-list.componen
 import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeItemComponent } from './employee-item/employee-item.component';
 import { SharedModule } from '../shared/shared.module';
+import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
 
 @NgModule({
   declarations: [
     EmployeesListComponent,
-    EmployeeItemComponent
+    EmployeeItemComponent,
+    EmployeeEditComponent
   ],
   imports: [
     FormsModule,

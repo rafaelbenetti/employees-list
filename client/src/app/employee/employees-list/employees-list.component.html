@@ -12,6 +12,7 @@
 </div>
 
 <div class="employees-container">
-  <app-employee-item *ngFor="let employee of (employees$ | async)" (delete)="onDeleteItem(employee)" [employee]="employee">
+  <app-employee-item *ngFor="let employee of (employees$ | async)" (delete)="onDelete(employee)" 
+    (edit)="onEdit(employee.id)" [employee]="employee">
   </app-employee-item>  
 </div>

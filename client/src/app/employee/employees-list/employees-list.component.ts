@@ -3,7 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
-import { Employee, WorkPositionType } from '../employee.model';
+import { Employee } from '../employee.model';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,7 +22,9 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
     search: new FormControl(null)
   });
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(
+    private router: Router,
+    private employeeService: EmployeeService) {
   }
 
   ngOnInit() {    
@@ -51,7 +54,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
     this.search$.emit();
   }
 
-  onDeleteItem(employee: Employee) {   
+  onDelete(employee: Employee) {   
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -69,13 +72,10 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
   }
 
   onHire() {
-    const employee = {
-      name: 'Jean',
-      surname: 'Pinzon',
-      workPosition: WorkPositionType.SwAdmin,
-      birthDate: new Date(1995, 7, 5)
-    }
-    this.employeeService.create(employee)
-      .subscribe(() => this.search$.emit());
+    this.router.navigate(['/employees/create']);
+  }
+
+  onEdit(employeeId?: string) {
+    this.router.navigate(['/employees', employeeId]);
   }
 }
