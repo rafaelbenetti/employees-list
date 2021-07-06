@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     AppRoutingModule,
     BrowserModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    NoopAnimationsModule
   ],
   bootstrap: [AppComponent]
 })

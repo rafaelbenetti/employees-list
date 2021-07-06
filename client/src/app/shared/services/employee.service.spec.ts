@@ -10,9 +10,10 @@ describe('EmployeeService (isolated)', () => {
   let service: EmployeeService;
 
   const url = `${environment.url}/employees`;
+  const workPositionsUrl = `${environment.workPositionsUrl}`;
 
   const employee: Employee = {
-    id: 1,
+    id: '1',
     name: 'Rafael',
     surname: 'Benetti',
     workPosition: WorkPositionType.FrontEndDeveloper,
@@ -32,6 +33,16 @@ describe('EmployeeService (isolated)', () => {
     service.get().subscribe();
 
     const request = httpTestingController.expectOne(url);
+    request.flush([]);
+
+    expect(request.request.method).toBe('GET');
+    httpTestingController.verify();
+  });
+
+  it('should call Work Positions resource with GET method', () => {
+    service.getWorkPositions().subscribe();
+
+    const request = httpTestingController.expectOne(workPositionsUrl);
     request.flush([]);
 
     expect(request.request.method).toBe('GET');

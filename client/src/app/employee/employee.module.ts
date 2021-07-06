@@ -6,6 +6,10 @@ import { EmployeeRoutingModule } from './employee-routing.module';
 import { EmployeeItemComponent } from './employee-item/employee-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { EmployeeEditComponent } from './employee-edit/employee-edit.component';
     EmployeeRoutingModule,    
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ]
 })
 export class EmployeeModule { }

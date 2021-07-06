@@ -15,6 +15,7 @@ const employeeSchema: Schema = new Schema({
   birthDate: { type: Date, default: Date.now }
 });
 
+/* This is necessary to normalize the json. Eg: return id instead of _id */
 employeeSchema.set('toJSON', {
   transform: function (doc, ret, options) {
     ret.id = ret._id;

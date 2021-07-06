@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
-import { Employee } from '../employee.model';
+import { Employee, WorkPositionType } from '../employee.model';
 
 const CREATE_ROUTE = 'create';
 
@@ -23,6 +24,8 @@ export class EmployeeEditComponent implements OnInit {
   isEdit?: boolean;
   employeeId?: string;
 
+  workPostionOptions$?: Observable<WorkPositionType[]>;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -40,6 +43,8 @@ export class EmployeeEditComponent implements OnInit {
         }
       });
     }
+
+    this.workPostionOptions$ = this.employeeService.getWorkPositions();
   }
 
   onCreate(): void {
@@ -51,6 +56,7 @@ export class EmployeeEditComponent implements OnInit {
 
   onUpdate(): void {
     const employee: Employee = this.formGroup.getRawValue();
+    employee.id = this.employeeId;
 
     this.employeeService.update(employee)
       .subscribe(() => this.redirectToEmployees());

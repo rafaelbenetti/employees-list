@@ -4,30 +4,46 @@
 
 <div [formGroup]="formGroup" class="employee-form">
   <div class="row">
-    <div class="col col-12">
-      <label class="input-label">Name<span>*</span></label>
-      <input formControlName="name" type="text" placeholder="Name" required>
+    <div class="col col-12 input-field">
+      <mat-label class="input-label">Name<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Name">
+      </mat-form-field> 
     </div>
   </div>
 
   <div class="row">
-    <div class="col col-12">
-      <label class="input-label">Surname<span>*</span></label>
-      <input formControlName="surname" type="text" placeholder="Surname" required>
+    <div class="col col-12 input-field">
+      <mat-label class="input-label">Surname<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" placeholder="Surname">
+      </mat-form-field>      
     </div>
   </div>
 
   <div class="row">
-    <div class="col col-12">
-      <label class="input-label">Work Position<span>*</span></label>
-      <input formControlName="workPosition" type="text" placeholder="Work Position" required>
+    <div class="col col-12 input-field">      
+      <mat-label class="input-label">Work Position<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Select Work Position</mat-label>
+        <mat-select formControlName="workPosition" placeholder="Work Position">          
+          <mat-option *ngFor="let position of (workPostionOptions$ | async)" [value]="position">{{ position }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 
   <div class="row">
-    <div class="col col-12">
-      <label class="input-label">Birthday<span>*</span></label>
-      <input formControlName="birthDate" type="text" placeholder="Birthday" required>
+    <div class="col col-12 date-field">
+      <mat-label class="input-label">Birthday<span>*</span></mat-label>
+      <mat-form-field floatLabel="never">
+        <mat-label>Birthday</mat-label>
+        <input matInput formControlName="birthDate" placeholder="Birthday" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
   </div>
 

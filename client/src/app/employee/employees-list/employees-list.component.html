@@ -3,8 +3,11 @@
 </div>
 
 <div class="row">
-  <div [formGroup]="formGroup" class="col col-6">
-    <input type="text" formControlName="search" placeholder="Search by name, surname or work position">
+  <div [formGroup]="formGroup" class="col col-6 input-field">    
+    <mat-form-field floatLabel="never">
+      <mat-label>Search by name, surname or work position</mat-label>
+      <input matInput formControlName="search">
+    </mat-form-field>
   </div>
   <div class="col col-6 hire-container">
     <button (click)="onHire()" class="button button--medium">Hire Employee</button>

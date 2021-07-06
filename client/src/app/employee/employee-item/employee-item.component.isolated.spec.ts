@@ -8,4 +8,10 @@ describe('EmployeeItemComponent (isolated)', () => {
     component.onDelete();
     expect(component.delete.emit).toHaveBeenCalled();
   });
+
+  it('should EMIT edit for an employee', () => {
+    spyOn(component.edit, 'emit');
+    component.onEdit();
+    expect(component.edit.emit).toHaveBeenCalled();
+  });
 });
