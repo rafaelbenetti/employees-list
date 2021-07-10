@@ -1,6 +1,9 @@
 # Employees List
 Mean stack application to manage employees with docker containers..
 
+### Preview
+- If you wish to have a quick look to the app design or test results, please open `preview` folder.
+
 ### Clone the repo
 ```bash
 $ git clone https://github.com/rafaelbenetti/employees-list
@@ -46,7 +49,7 @@ $ npm test
   - Mongodb
 
 ## Next steps
-- Add `ngxs` store management on UI.
-- Add services workers for caching static data (icons, fonts, etc).
 - Create roles management (ADMIN, EMPLOYEE).
 - Create history for the employees list.
+- Add services workers for caching static data (icons, fonts, etc).
+- Increase API Tests

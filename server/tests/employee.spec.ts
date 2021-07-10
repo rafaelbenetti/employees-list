@@ -7,26 +7,66 @@ const COLLECTION = '/employees';
 const EMPLOYEE = EMPLOYEES[0];
 
 describe('Creating new Employee', () => {
-  it('should returns 201 status', async () => {
+  it('should create employee and return correct http status', async () => {
     await request(app)
       .post(COLLECTION)
       .send(EMPLOYEE)
-      .expect(201);
+      .expect(201)
+      .then(() => {
+        request(app)
+          .get(COLLECTION)
+          .then(result => {
+            return expect(result.body?.length).toBeTruthy();
+          });
+      });
+  });
+});
+
+describe('Update Employee', () => {
+  it('should update employee by ID', async () => {
+    await findOne().then((employee: IEmployee) => {
+      employee.name = `${employee.name} updated`;
+      request(app)
+        .put(COLLECTION)
+        .send(employee)
+        .expect(200)
+        .then(() => {
+          request(app)
+          .get(COLLECTION)
+          .then(result => {
+            const updated = result.body.find(e => e.id === employee.id);
+            return expect(updated.name).toBe(employee.name);
+          });
+        });
+    });
+  });
+
+  it('should return 404 when ID not passed', async () => {    
+    await request(app)
+      .put(COLLECTION)
+      .send()
+      .expect(404);
   });
 });
 
 describe('Delete Employee', () => {
-  it('should delete Employee by ID', async () => {
+  it('should delete employee by ID', async () => {
     await findOne().then((employee: IEmployee) => {
       request(app)
         .delete(`${COLLECTION}/${employee.id}`)
         .expect(204);
     });
   });
+
+  it('should return 404 when ID not passed', async () => {    
+    await request(app)
+      .delete(COLLECTION)
+      .expect(404);
+  });
 });
 
 describe('Find Employees', () => {
-  it('should return status 200', async () => {
+  it('should return all employees', async () => {
     await request(app)
       .get(COLLECTION)
       .expect(200);
