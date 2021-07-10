@@ -24,7 +24,7 @@ router.put('/', async (req: Request, res: Response): Promise<void> => {
 
 router.delete('/:id', async (req: Request, res: Response): Promise<void> => {
   employeeController.delete(req.params.id).then(data => {
-    res.json(data);
+    res.status(204).json(data);
   });
 });
 

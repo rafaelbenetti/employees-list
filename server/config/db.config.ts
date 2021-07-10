@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import path from 'path';
 
-dotenv.config();
+dotenv.config({ 
+  path: path.resolve(__dirname, `./env/${process.env.ENVIRONMENT}.env`)
+});
+
 let database: mongoose.Connection;
 
 export const connect = () => {
@@ -22,7 +26,7 @@ export const connect = () => {
   database = mongoose.connection;
 
   database.once('open', async () => {
-    console.log('Connected to database');
+    console.log(`Connected to database: ${url}`);
   });
 
   database.on('error', () => {
