@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config({ 
-  path: path.resolve(__dirname, `./env/${process.env.ENVIRONMENT}.env`)
+dotenv.config({
+  path: path.resolve('/usr/src/app/config/env/', `${process.env.NODE_ENV}.env`)
 });
 
 let database: mongoose.Connection;
@@ -11,7 +11,6 @@ let database: mongoose.Connection;
 export const connect = () => {
   
   const url: string = `${process.env.DB_CONNECTION_STRING}`;
-
   if (database) {
     return;
   }

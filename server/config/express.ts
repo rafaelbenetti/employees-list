@@ -5,8 +5,8 @@ import path from 'path';
 
 import employeeRouter from '../employee/employee-router';
 
-dotenv.config({ 
-  path: path.resolve(__dirname, `./env/${process.env.ENVIRONMENT}.env`)
+dotenv.config({
+  path: path.resolve('/usr/src/app/config/env/', `${process.env.NODE_ENV}.env`)
 });
 
 const app = express();

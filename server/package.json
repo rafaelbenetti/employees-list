@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "ENVIRONMENT=dev tsc && node dist/index.js",
-    "test": "ENVIRONMENT=test jest --verbose"
+    "start": "export NODE_ENV=dev && tsc && node dist/index.js",
+    "test": "export NODE_ENV=test && jest --verbose"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -16,7 +16,7 @@
     },
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
+        "tsConfig": "tsconfig.json"
       }
     },
     "testMatch": [
