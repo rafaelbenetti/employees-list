@@ -30,3 +30,23 @@ $ npm test
 $ docker exec -it employees-list_angular_1 bash
 $ npm test
 ```
+
+## App Main Stack
+- Environment
+  - Docker
+  - Docker Compose
+- Client
+  - Angular 2+
+  - Angular Material (used only for input, select and datepicker).
+  - `sweetalert2` used to confirm end of contract.
+- Server
+  - Node
+  - Express
+  - Mongoose
+  - Mongodb
+
+## Next steps
+- Add `ngxs` store management on UI.
+- Add services workers for caching static data (icons, fonts, etc).
+- Create roles management (ADMIN, EMPLOYEE).
+- Create history for the employees list.

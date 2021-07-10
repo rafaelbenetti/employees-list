@@ -8,7 +8,7 @@
       <mat-label class="input-label">Name<span>*</span></mat-label>
       <mat-form-field floatLabel="never">
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name" placeholder="Name">
+        <input matInput formControlName="name">
       </mat-form-field> 
     </div>
   </div>
@@ -18,7 +18,7 @@
       <mat-label class="input-label">Surname<span>*</span></mat-label>
       <mat-form-field floatLabel="never">
         <mat-label>Surname</mat-label>
-        <input matInput formControlName="surname" placeholder="Surname">
+        <input matInput formControlName="surname">
       </mat-form-field>      
     </div>
   </div>
@@ -28,7 +28,7 @@
       <mat-label class="input-label">Work Position<span>*</span></mat-label>
       <mat-form-field floatLabel="never">
         <mat-label>Select Work Position</mat-label>
-        <mat-select formControlName="workPosition" placeholder="Work Position">          
+        <mat-select formControlName="workPosition">          
           <mat-option *ngFor="let position of (workPostionOptions$ | async)" [value]="position">{{ position }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -37,10 +37,10 @@
 
   <div class="row">
     <div class="col col-12 date-field">
-      <mat-label class="input-label">Birthday<span>*</span></mat-label>
+      <mat-label class="input-label">Date of Birth<span>*</span></mat-label>
       <mat-form-field floatLabel="never">
-        <mat-label>Birthday</mat-label>
-        <input matInput formControlName="birthDate" placeholder="Birthday" [matDatepicker]="picker">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput formControlName="birthDate" [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
