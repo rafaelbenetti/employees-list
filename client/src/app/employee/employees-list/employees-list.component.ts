@@ -1,19 +1,23 @@
-import { AfterViewInit, Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { EmployeeService } from 'src/app/shared/services/employee.service';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { Employee } from '../employee.model';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import Swal from 'sweetalert2';
+
+import EmployeeState from '../store/employee.state';
+import * as EmployeeActions from '../store/employee.actions';
+import { selectEmployees } from '../store/employee.selectors';
 
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
   styleUrls: ['./employees-list.component.scss']
 })
-export class EmployeesListComponent implements OnInit, AfterViewInit {
-  search$: EventEmitter<string> = new EventEmitter<string>();
+export class EmployeesListComponent implements OnInit {
+  search$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   employees$?: Observable<Employee[]>;
   employee?: Employee;
@@ -23,35 +27,31 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
   });
 
   constructor(
-    private router: Router,
-    private employeeService: EmployeeService) {
-  }
+    private store: Store<EmployeeState>,
+    private router: Router) { }
 
-  ngOnInit() {    
-    this.employees$ = this.search$.pipe(
-      switchMap((search: string) => this.employeeService.get()
-        .pipe(
-          map((employees: Employee[]): Employee[] => {
-            return employees
-              .filter(employee => {
-                const fullName = `${employee.name} ${employee.surname}`;
-                
-                return !search || 
-                  (fullName.toLowerCase().includes(search) || 
-                    employee.workPosition.toLowerCase().includes(search));
-              });
-          })
-        )
-      )
-    );
+  ngOnInit() {  
+    this.employees$ = combineLatest([
+      this.search$,
+      this.store.select(selectEmployees)
+    ])
+      .pipe(
+        map(([search, employees]): Employee[] => {
+          return employees
+            .filter(employee => {
+              const fullName = `${employee.name} ${employee.surname}`;
+              
+              return !search || 
+                (fullName.toLowerCase().includes(search) || 
+                  employee.workPosition.toLowerCase().includes(search));
+            });
+        })
+    ); 
 
-    this.formGroup.valueChanges.subscribe((values) => {
-      this.search$.emit(values.search?.toLowerCase());
-    });
-  }
-
-  ngAfterViewInit(): void {
-    this.search$.emit();
+    this.formGroup.valueChanges
+      .subscribe((values) => {
+        this.search$.next(values.search?.toLowerCase());
+      });
   }
 
   onDelete(employee: Employee) {   
@@ -65,8 +65,7 @@ export class EmployeesListComponent implements OnInit, AfterViewInit {
       confirmButtonText: 'Yes, End Contract!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.employeeService.delete(employee.id)
-          .subscribe(() => this.search$.emit());
+        this.store.dispatch(EmployeeActions.BeginDeleteEmployeeAction({payload: employee.id}));
       } 
     });
   }

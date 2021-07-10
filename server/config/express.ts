@@ -1,10 +1,13 @@
 import dotenv from 'dotenv';
 import cors from 'cors';
 import express from 'express';
+import path from 'path';
 
 import employeeRouter from '../employee/employee-router';
 
-dotenv.config();
+dotenv.config({
+  path: path.resolve('/usr/src/app/config/env/', `${process.env.NODE_ENV}.env`)
+});
 
 const app = express();
 
