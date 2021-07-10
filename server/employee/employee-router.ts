@@ -18,6 +18,9 @@ router.post('/', async (req: Request, res: Response): Promise<void> => {
 
 router.put('/', async (req: Request, res: Response): Promise<void> => {
   employeeController.update(req.body).then(data => {
+    if (data.nModified === 0) {
+      return res.status(404).json(data);
+    }    
     return res.json(data);
   });
 });
