@@ -19,10 +19,6 @@ describe('FooterComponent (shallow)', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should render rights reserved message', () => {
     const fixture = TestBed.createComponent(FooterComponent);
     fixture.detectChanges();
